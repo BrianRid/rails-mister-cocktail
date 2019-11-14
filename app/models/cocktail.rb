@@ -4,4 +4,5 @@ class Cocktail < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
   validates_associated :doses
+  validates_associated :ingredients
 end
