@@ -1,17 +1,24 @@
-<div class="navbar-lewagon">
+<%= render "layouts/_shared/navbar" %>
 
+<div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556745763-1a6f0ddb0250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1577&q=80)">
+    <h1>Double Face <strong>online bar</strong> </h1>
+    <p>Store your best Creation</p>
 </div>
-<div class="container mt-3">
-  <h1>Cocktails</h1>
+<div class="container d-flex justify-content-between mt-3">
   <% @cocktails.each do |cocktail| %>
-    <div class="card col-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(url)">
-    <%= cocktail.name %>
-    <%= link_to "View More", cocktail_path(cocktail)  %>
+    <div class="card col-4 p-0" style="width: 18rem;">
+     <%= image_tag "https://source.unsplash.com/300x240/?#{cocktail.name}", alt: "alttext" %>
+        <%= cocktail.name %>
+          <ul>
+            <% cocktail.doses.each do |dose| %>
+              <li><%= dose.ingredient.name %>
+              <%= dose.description %></li>
+            <% end %>
+          </ul>
+          <%= link_to "View More", cocktail_path(cocktail)  %>
+      </div>
+        <% end %>
     </div>
-  <% end %>
 
-  <%= link_to "Create a new cocktail", new_cocktail_path, class: "btn btn-primary" %>
-
-
-
+  <%= link_to "Create a new cocktail", new_cocktail_path, class: "btn btn-primary mt-3" %>
 </div>
