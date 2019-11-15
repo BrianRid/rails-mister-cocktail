@@ -1,15 +1,24 @@
-<div class="container">
 
-  <h1><%= @cocktail.name %></h1>
-  <% @cocktail.doses.each do |dose| %>
-  <h2><%= dose.description %></h2>
-  <h2><%= dose.ingredient.name %></h2>
-   <%= link_to "Delete an ingredient", dose_path(dose), method: :delete %>
+<div class="container mt-3">
+
+<div class="card d-flex justify-content-between row my-2 px-1 rounded col-6">
+  <h1 class="px-2"><%= @cocktail.name %></h1>
+      <div class="col-4 ">
+      <%= image_tag "https://source.unsplash.com/300x240/?#{@cocktail.name}", alt: "alttext" %>
+      </div>
+    <% @cocktail.doses.each do |dose| %>
+    <div class="d-flex mx-2 justify-content-start">
+      <p class="mx-2 my-2"><%= dose.description %></p>
+      <p class="mx-2 my-2"><%= dose.ingredient.name %></p>
+      <%= link_to "Delete an ingredient", dose_path(dose), method: :delete, class: "my-2" %>
+    </div>
   <% end %>
-
+</div>
+<div class="d-flex justify-content-between col-6">
   <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
-  <%= link_to "Back home", cocktails_path, class: "btn btn-primary" %>
   <%= link_to "Delete cocktail", cocktail_path, method: :delete, class: "btn btn-danger"%>
+  <%= link_to "Back home", cocktails_path, class: "btn btn-primary" %>
+</div>
 
 
 </div>

@@ -16,4 +16,13 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
-import 'bootsrap';
+import 'bootstrap';
+
+
+// Eventlistener on cards
+
+const card = document.querySelector('card-body');
+card.addEventListener("click",(event) => {
+    document.location.href = cocktail_path(cocktail);
+});
+
